@@ -2,7 +2,6 @@ ARG BASE_IMAGE=ubuntu:22.04
 FROM ${BASE_IMAGE}
 
 RUN if command -v apt > /dev/null; then \
-      sed -i 's/archive.ubuntu.com/mirror.yandex.ru/g' /etc/apt/sources.list && \
       apt-get update -o Acquire::http::Timeout=30 -o Acquire::ForceIPv4=true && \
       DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
         texlive-base \
